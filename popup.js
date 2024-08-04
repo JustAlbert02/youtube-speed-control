@@ -6,7 +6,7 @@ document.getElementById('setSpeed').addEventListener('click', () => {
   }
 
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    if (tabs[0].url.includes('youtube.com/watch')) {  // Ensure it's a YouTube video page
+    if (tabs[0].url.includes('youtube.com/watch')) {
       console.log('Sending message to content script:', { command: 'setSpeed', value: speed });
       chrome.tabs.sendMessage(tabs[0].id, { command: 'setSpeed', value: speed }).catch((error) => {
         console.error('Error sending message:', error);
